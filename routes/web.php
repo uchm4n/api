@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return response(["Unauthorised Access!"],403);
+    return response(["message" => "Forbidden","status_code" => 403],403);
 });
