@@ -13,5 +13,6 @@ $api->version('v1',['namespace' => 'App\Http\Controllers'], function ($api) {
     $api->group(['middleware' => 'api.auth'], function ($api) {
         $api->get('/user','UserController@user');
         $api->get('/users','UserController@all');
+        $api->get('/token','UserController@token');
     });
 });

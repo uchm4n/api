@@ -16,7 +16,7 @@ class UserController extends Controller
     public function all()
     {
         $user = User::all();
-        return $this->response->collection($user,new UserTransformer);
+        return $this->response->collection($user, new UserTransformer);
     }
 
     public function user()
@@ -30,14 +30,14 @@ class UserController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->only(['email','password']);
+        $credentials = $request->only(['email', 'password']);
         $token = JWTAuth::attempt($credentials);
 
-        try{
-            if(!$token){
+        try {
+            if (!$token) {
                 $this->response->errorUnauthorized();
             }
-        }catch (JWTException $e){
+        } catch (JWTException $e) {
             return $this->response->errorInternal();
         }
 
@@ -47,12 +47,31 @@ class UserController extends Controller
 
     public function register(RegisterUser $request)
     {
-        try{
+        try {
             return User::create($request->all());
-        }catch (ErrorException $e){
-            return $this->response->errorInternal('Something went wrong',$e);
+        } catch (ErrorException $e) {
+            return $this->response->errorInternal('Something went wrong', $e);
         }
 
     }
 
+    /**
+     * Refresh a token and send back to client
+     * @return mixed
+     */
+    public function token()
+    {
+        $token = JWTAuth::getToken();
+        if (!$token) {
+            return $this->response->errorUnauthorized('Token is invalid');
+        }
+
+        try {
+            $refreshToken = JWTAuth::refresh($token);
+        } catch (JWTException $e) {
+            return $this->response->errorInternal('Something went wrong');
+        }
+        return $this->response->array(compact('refreshToken'));
+
+    }
 }
