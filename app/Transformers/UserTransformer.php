@@ -10,9 +10,12 @@ class UserTransformer extends TransformerAbstract {
     {
         return [
             'id'     => (int) $user->id,
-            'username'     => (int) $user->username,
-            'email'     => (int) $user->email,
-            'token'   => '$user->token'
+            'name'     => $user->name,
+            'email'     => $user->email,
+            'phone'   => $user->phone,
+            'bio'   => $user->bio,
+            'image'   => $user->image,
+            'createdAt'   => $user->created_at,
         ];
     }
 }

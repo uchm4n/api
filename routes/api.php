@@ -5,8 +5,13 @@ $api = app('Dingo\Api\Routing\Router');
 
 //Endpoints
 $api->version('v1',['namespace' => 'App\Http\Controllers'], function ($api) {
-    $api->get('/test','Test@test');
-    $api->group(['middleware' => 'auth:api'], function ($api) {
-        $api->get('/testing','Test@test');
+
+    $api->post('/auth','UserController@authenticate');
+    $api->post('/register','UserController@register');
+
+    //Authenticated Users Route
+    $api->group(['middleware' => 'api.auth'], function ($api) {
+        $api->get('/user','UserController@user');
+        $api->get('/users','UserController@all');
     });
 });
