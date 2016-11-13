@@ -14,12 +14,19 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
 
+    /**Get All Data
+     * @return \Dingo\Api\Http\Response
+     */
     public function index()
     {
-        $tasks = Task::all();
-        return $this->response->collection($tasks, new TaskTransformer);
+        $tasks = Task::paginate();
+        return $this->response->paginator($tasks, new TaskTransformer);
     }
 
+    /**Show Data by id
+     * @param $id
+     * @return \Dingo\Api\Http\Response|void
+     */
     public function show($id)
     {
         try{
@@ -30,6 +37,10 @@ class TaskController extends Controller
         }
     }
 
+    /**Store DAta
+     * @param TaskRequest $request
+     * @return \Dingo\Api\Http\Response|void
+     */
     public function store(TaskRequest $request)
     {
         try{
@@ -40,6 +51,11 @@ class TaskController extends Controller
         }
     }
 
+    /**Update Data
+     * @param $id
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response|void
+     */
     public function update($id,Request $request)
     {
         try{
@@ -52,6 +68,9 @@ class TaskController extends Controller
 
     }
 
+    /**Delete Data
+     * @param $id
+     */
     public function destroy($id)
     {
         try{
