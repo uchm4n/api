@@ -179,7 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Dingo API Package
         Dingo\Api\Provider\LaravelServiceProvider::class,
-        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
 
     ],

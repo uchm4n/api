@@ -1,4 +1,11 @@
 ## Api
 General purpose public API
 
-## Usage
+## Demo
+---- 
+- Web http://expertj.com
+- API http://api.expertj.com
+
+## Documentation
+----
+In progress...
