@@ -11,8 +11,6 @@
 |
 */
 
-use App\Task;
-
-Route::get('/', function () {
+Route::get('/{any}', function ($any) {
     return response(["message" => "Forbidden","status_code" => 403],403);
-});
+})->where('any', '.*');
