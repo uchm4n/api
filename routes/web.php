@@ -11,6 +11,8 @@
 |
 */
 
+use App\Task;
+
 Route::get('/', function () {
     return response(["message" => "Forbidden","status_code" => 403],403);
 });
