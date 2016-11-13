@@ -15,7 +15,7 @@ class UserTransformer extends TransformerAbstract {
             'phone'   => $user->phone,
             'bio'   => $user->bio,
             'image'   => $user->image,
-            'createdAt'   => $user->created_at,
+            'created_at'   => $user->created_at,
         ];
     }
 }

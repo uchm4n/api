@@ -25,3 +25,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(60),
     ];
 });
+
+$factory->define(App\Task::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->paragraph,
+        'user_id' => 1,
+        'completed' => random_int(0,1),
+    ];
+});
