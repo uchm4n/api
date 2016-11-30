@@ -45,6 +45,11 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Register a new user
+     * @param RegisterUser $request
+     * @return void|static
+     */
     public function register(RegisterUser $request)
     {
         try {
