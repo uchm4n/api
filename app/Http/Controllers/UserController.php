@@ -6,6 +6,7 @@ use App\Http\Requests\RegisterUser;
 use App\Transformers\UserTransformer;
 use App\User;
 use Dingo\Api\Contract\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Psy\Exception\ErrorException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -54,7 +55,11 @@ class UserController extends Controller
     {
         try {
             return User::create($request->all());
-        } catch (ErrorException $e) {
+        }
+        catch(\Exception $e){
+            return $this->response->errorInternal('Cannot create User',$e);
+        }
+        catch (ErrorException $e) {
             return $this->response->errorInternal('Something went wrong', $e);
         }
 
