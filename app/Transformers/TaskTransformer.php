@@ -2,13 +2,12 @@
 namespace App\Transformers;
 
 use App\Task;
-use App\Transformers\UserTransformer;
-use App\User;
 use League\Fractal\TransformerAbstract;
 
 class TaskTransformer extends TransformerAbstract {
 
-    protected $defaultIncludes = [ 'user' ];
+    //Temp disable user includes
+    //protected $defaultIncludes = ['user'];
 
     public function transform(Task $task)
     {
@@ -20,8 +19,13 @@ class TaskTransformer extends TransformerAbstract {
         ];
     }
 
-    public function includeUser(Task $task){
-        $user = $task->user;
-        return $this->item($user, new UserTransformer());
+    /**
+     * @param Task $task
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeUser(Task $task)
+    {
+        $user = $task->user();
+        return $this->item($user, new UserTransformer);
     }
 }
