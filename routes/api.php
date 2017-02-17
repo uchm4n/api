@@ -10,15 +10,13 @@ $api->version('v1',['middleware' => 'cors','namespace' => 'App\Http\Controllers'
     $api->post('/auth','UserController@authenticate');
     $api->post('/register','UserController@register');
 
-    //Authenticated Users Route
     $api->group(['middleware' => 'api.auth'], function ($api) {
+        //Authenticated Users Route
         $api->get('/user','UserController@user');
         $api->get('/users','UserController@all');
         $api->get('/token','UserController@token');
-    });
 
-    //Tasks Route
-    $api->group(['middleware' => 'api.auth'], function ($api) {
+        //Tasks Route
         $api->get('/task','TaskController@index');
         $api->get('/task/{id}','TaskController@show');
         $api->post('/task/store','TaskController@store');
