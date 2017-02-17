@@ -10,7 +10,8 @@
         "dingo/api": "1.0.x@dev",
         "tymon/jwt-auth": "^0.5.9",
         "barryvdh/laravel-cors": "^0.8.2",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "spatie/laravel-permission": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
