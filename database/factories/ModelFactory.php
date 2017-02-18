@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('12345'),
+        'password' => '12345',
         'phone' => $faker->phoneNumber,
         'bio' => $faker->paragraph,
         'image' => $faker->imageUrl(128, 128),

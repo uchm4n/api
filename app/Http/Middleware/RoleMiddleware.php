@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Middleware\BaseMiddleware;
 
-class RoleMiddleware extends \Tymon\JWTAuth\Middleware\GetUserFromToken
+class RoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,34 +16,21 @@ class RoleMiddleware extends \Tymon\JWTAuth\Middleware\GetUserFromToken
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, \Closure $next)
+    public function handle($request, \Closure $next,$role,$permission)
     {
+        //if (Auth::guest()) {
+        //    return redirect('/');
+        //}
 
-        //JWT Implementation
+        if (! $request->user()->hasRole($role)) {
+            abort(403);
+        }
 
-        if ($token = $this->auth->setRequest($request)->getToken()) {
-            try {
-                $this->auth->authenticate($token);
-            } catch (\Exception $e) {
-                unset($e);
-            }
+        if (! $request->user()->can($permission)) {
+            abort(403);
         }
 
         return $next($request);
 
-
-//        if (Auth::guest()) {
-//            return redirect('/');
-//        }
-//
-//        if (! $request->user()->hasRole($role)) {
-//            abort(403);
-//        }
-//
-//        if (! $request->user()->can($permission)) {
-//            abort(403);
-//        }
-//
-//        return $next($request);
     }
 }
