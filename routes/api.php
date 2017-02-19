@@ -19,7 +19,7 @@ $api->version('v1',['middleware' => 'cors','namespace' => 'App\Http\Controllers'
 
     });
 
-    $api->group(['middleware' => 'role:admin,access_backend'], function ($api) {
+    $api->group(['middleware' => ['api.auth','role:admin,access_backend']], function ($api) {
         //Tasks Route
         $api->get('/task','TaskController@index');
         $api->get('/task/{id}','TaskController@show');

@@ -3,31 +3,29 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\Middleware\BaseMiddleware;
 
 class RoleMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
-    public function handle($request, \Closure $next,$role,$permission)
+    public function handle($request, \Closure $next, $role, $permission)
     {
-        //if (Auth::guest()) {
-        //    return redirect('/');
-        //}
 
-        if (! $request->user()->hasRole($role)) {
-            abort(403);
+        if (!auth()->check()) {
+            abort(403,'User is not authenticated');
         }
 
-        if (! $request->user()->can($permission)) {
-            abort(403);
+        if (!auth()->user()->hasRole($role)) {
+            abort(403,'User has no role '.$role);
+        }
+
+        if(!auth()->user()->can($permission)){
+            about(403,'user has no permission '.$permission);
         }
 
         return $next($request);
