@@ -8,4 +8,9 @@ General purpose public API
 
 ## Documentation
 ----
-In progress...
+api contains several packages:
+- dingo api
+- jwt-auth
+- laravel-cors
+- entrust
+
