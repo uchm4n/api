@@ -5,7 +5,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 
 //Endpoints
-$api->version('v1',['middleware' => 'cors','namespace' => 'App\Http\Controllers'], function ($api) {
+$api->version('v1',['middleware' => ['cors','locale'],'namespace' => 'App\Http\Controllers'], function ($api) {
 
     $api->post('/auth','UserController@authenticate');
     $api->post('/register','UserController@register');
