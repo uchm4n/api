@@ -16,11 +16,11 @@ class ACL extends Seeder
         $user = new \App\User();
         $user = $user->where('email','ucha19871@gmail.com')->firstOrFail();
 
-        $role = Role::create(['name' => 'admin']);
-        $permission = Permission::create(['name' => 'access_backend']);
-        $role->givePermissionTo('access_backend');
-        $user->assignRole('admin');
-        $user->givePermissionTo('access_backend');
-        echo($user);
+        //$role = Role::create(['name' => 'admin']);
+        //$permission = Permission::create(['name' => 'access_backend']);
+        //$role->givePermissionTo('access_backend');
+        //$user->assignRole('admin');
+        //$user->givePermissionTo('access_backend');
+        //echo($user);
     }
 }

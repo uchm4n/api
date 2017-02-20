@@ -183,10 +183,6 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
 
-        //Spatie Service Providers
-        Spatie\Permission\PermissionServiceProvider::class,
-
-
     ],
 
     /*
