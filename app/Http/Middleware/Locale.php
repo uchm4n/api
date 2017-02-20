@@ -14,7 +14,7 @@ class Locale
      *
      * @array $languages
      */
-    protected $languages = ['en','ge'];
+    protected $languages = ['ge','en'];
 
     /**
      * Handle an incoming request.
@@ -35,7 +35,7 @@ class Locale
         //using Sessions
         if(!session()->has('locale'))
         {
-            session()->put('locale', $request->getPreferredLanguage($this->languages));
+            session()->put('locale', config('app.locale'));
         }
         app()->setLocale(session('locale'));
         return $next($request);

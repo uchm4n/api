@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ge',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,6 +184,7 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
 
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Spatie\Translatable\TranslatableServiceProvider::class,
 
     ],
 

@@ -28,7 +28,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Task::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->paragraph,
+        'title' => [
+            'en' => $faker->paragraph.  'English',
+            'ge' => $faker->paragraph.  'Georgian'
+        ],
         'user_id' => 1,
         'completed' => random_int(0,1),
     ];
