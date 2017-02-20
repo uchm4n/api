@@ -33,13 +33,11 @@ class Locale
 
 
         //using Sessions
-        if(!Session::has('locale'))
+        if(!session()->has('locale'))
         {
-            Session::put('locale', $request->getPreferredLanguage($this->languages));
+            session()->put('locale', $request->getPreferredLanguage($this->languages));
         }
-        app()->setLocale(Session::get('locale'));
-
-        //return $request->cookie();
+        app()->setLocale(session('locale'));
         return $next($request);
     }
 }
