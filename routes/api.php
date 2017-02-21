@@ -3,7 +3,6 @@
 //Registre Dingo PI Router
 $api = app('Dingo\Api\Routing\Router');
 
-
 //Endpoints
 $api->version('v1',['middleware' => ['cors','locale'],'namespace' => 'App\Http\Controllers'], function ($api) {
 
@@ -25,8 +24,6 @@ $api->version('v1',['middleware' => ['cors','locale'],'namespace' => 'App\Http\C
             $api->put('/task/update/{id}','TaskController@update');
             $api->delete('/task/delete/{id}','TaskController@destroy');
         });
-
-
     });
 
 });
