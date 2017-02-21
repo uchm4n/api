@@ -11,22 +11,22 @@ $api->version('v1',['middleware' => ['cors','locale'],'namespace' => 'App\Http\C
     $api->post('/auth','UserController@authenticate');
     $api->post('/register','UserController@register');
 
+    //Authenticated endpoints
     $api->group(['middleware' => 'api.auth'], function ($api) {
-        //Authenticated Users Route
         $api->get('/user','UserController@user');
-        $api->get('/users','UserController@all');
         $api->get('/token','UserController@token');
 
+        //Admin Endpoints
+        $api->group(['middleware' => 'role:admin'], function ($api) {
+            $api->get('/users','UserController@all');
+            $api->get('/task','TaskController@index');
+            $api->get('/task/{id}','TaskController@show');
+            $api->post('/task/store','TaskController@store');
+            $api->put('/task/update/{id}','TaskController@update');
+            $api->delete('/task/delete/{id}','TaskController@destroy');
+        });
 
-    });
 
-    $api->group(['middleware' => ['api.auth','role:admin']], function ($api) {
-        //Tasks Route
-        $api->get('/task','TaskController@index');
-        $api->get('/task/{id}','TaskController@show');
-        $api->post('/task/store','TaskController@store');
-        $api->put('/task/update/{id}','TaskController@update');
-        $api->delete('/task/delete/{id}','TaskController@destroy');
     });
 
 });
