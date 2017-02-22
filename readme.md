@@ -20,7 +20,7 @@ To use api you need to have a user name to generate token.
 - First you must register a user. To register a user
  send post request to this end point with following data 
  **Endpoint:** `api/register`
- ```javascript
+ ```
     {
         "name": "Your Name",
         "email" : "info@example.com",
@@ -32,7 +32,7 @@ To use api you need to have a user name to generate token.
  ```
  - After registering a username, authorize with your credentials  
  **Endpoint:** `api/auth`
-  ```javascript
+  ```
      {
          "email" : "info@example.com",
          "password" : "password",
