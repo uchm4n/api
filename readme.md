@@ -20,7 +20,7 @@ To use api you need to have a user name to generate token.
 - First you must register a user. To register a user
  send post request to this end point with following data 
  **Endpoint:** `api/register`
- ```
+ ```json
     {
         "name": "Your Name",
         "email" : "info@example.com",
@@ -32,12 +32,12 @@ To use api you need to have a user name to generate token.
  ```
  - After registering a username, authorize with your credentials  
  **Endpoint:** `api/auth`
-  ```
-     {
-         "email" : "info@example.com",
-         "password" : "password",
-     }
-  ```
+```json
+    {
+     "email" : "info@example.com",
+     "password" : "password",
+    }
+```
  > This action will give you a token which will be used to access other endpoints.
  > You should pass **Authorization** header with **Bearer eyJ0eXAiOiJKV1Q...**
  
