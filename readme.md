@@ -20,7 +20,7 @@ To use api you need to have a user name to generate token.
 - First you must register a user. To register a user
  send post request to this end point with following data 
  **Endpoint:** `api/register`
- ```json
+ ```javascript
     {
         "name": "Your Name",
         "email" : "info@example.com",
@@ -32,7 +32,7 @@ To use api you need to have a user name to generate token.
  ```
  - After registering a username, authorize with your credentials  
  **Endpoint:** `api/auth`
-  ```json
+  ```javascript
      {
          "email" : "info@example.com",
          "password" : "password",
@@ -45,18 +45,18 @@ To use api you need to have a user name to generate token.
 
 ####Available endpoints are 
  
- | Method         | Endpoint                |  Access
- | -------------  |:-------------:          |  -----:
- | GET            | /api/locale/{lang}      |   All   
- | POST           | /api/auth               |   All
- | POST           | /api/register           |   All
- | GET            | /api/user               |   User
- | GET            | /api/token              |   User
- | GET            | /api/users              |   User
- | GET            | /api/task               |   Admin
- | GET            | /api/task/{id}          |   Admin
- | POST           | /api/task/store         |   Admin
- | PUT            | /api/task/update/{id}   |   Admin
- | DELETE         | /api/task/delete/{id}   |   Admin
+  Method         | Endpoint                |  Access
+  -------------  | -------------           |  -----
+  GET            | /api/locale/{lang}      |   All   
+  POST           | /api/auth               |   All
+  POST           | /api/register           |   All
+  GET            | /api/user               |   User
+  GET            | /api/token              |   User
+  GET            | /api/users              |   User
+  GET            | /api/task               |   Admin
+  GET            | /api/task/{id}          |   Admin
+  POST           | /api/task/store         |   Admin
+  PUT            | /api/task/update/{id}   |   Admin
+  DELETE         | /api/task/delete/{id}   |   Admin
 
 ---
