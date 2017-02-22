@@ -1,8 +1,9 @@
 <?php
 
+use App\Permission;
+use App\Role;
+use App\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class ACL extends Seeder
 {
@@ -13,7 +14,7 @@ class ACL extends Seeder
      */
     public function run()
     {
-        $user = new \App\User();
+        $user = new User();
         $user = $user->where('email','ucha19871@gmail.com')->firstOrFail();
 
         $owner = new Role();
