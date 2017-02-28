@@ -36,7 +36,7 @@ class UserController extends Controller
 
         try {
             if (!$token) {
-                $this->response->errorUnauthorized();
+                $this->response->errorUnauthorized('Username or password is invalid');
             }
         } catch (JWTException $e) {
             return $this->response->errorInternal();
