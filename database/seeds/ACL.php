@@ -15,7 +15,7 @@ class ACL extends Seeder
     public function run()
     {
         $user = new App\User();
-        $user = $user->where('email','ucha19871@gmail.com')->firstOrFail();
+        $user = $user->where('email','demo@example.com')->firstOrFail();
 
         $owner = new Role();
         $owner->name         = 'owner';
@@ -39,8 +39,8 @@ class ACL extends Seeder
         $dashboard->description  = 'User dashboard access permission'; // optional
         $dashboard->save();
 
-        $owner->attachPermission($dashboard);
         $admin->attachPermission($dashboard);
+        $owner->attachPermission($dashboard);
 
         return [
             $user->hasRole('owner'),   // true
