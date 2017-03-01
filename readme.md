@@ -35,8 +35,8 @@ To use api you need to have a user name to generate token.
  **Endpoint:** `api/auth`
 ```json
     {
-     "email" : "info@example.com",
-     "password" : "password",
+     "email" : "demo@example.com",
+     "password" : "12345"
     }
 ```
  > This action will give you a token which will be used to access other endpoints.
