@@ -15,7 +15,7 @@ class TaskTransformer extends TransformerAbstract {
             'id'     => (int) $task->id,
             'title'     => $task->title,
             'completed'   => (boolean)$task->completed,
-            'created_at'   => $task->created_at,
+            'created_at'   => $task->created_at->format('Y/m/d'),
         ];
     }
 
