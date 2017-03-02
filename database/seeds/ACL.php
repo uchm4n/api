@@ -19,33 +19,41 @@ class ACL extends Seeder
 
         $owner = new Role();
         $owner->name         = 'owner';
-        $owner->display_name = 'Project Owner'; // optional
-        $owner->description  = 'User is the owner of a given project'; // optional
+        $owner->display_name = 'Project Owner';
+        $owner->description  = 'User is the owner of a given project';
         $owner->save();
 
         $admin = new Role();
         $admin->name         = 'admin';
-        $admin->display_name = 'User Administrator'; // optional
-        $admin->description  = 'User is allowed to manage and edit other users'; // optional
+        $admin->display_name = 'User Administrator';
+        $admin->description  = 'User is allowed to manage and administer site';
         $admin->save();
+
+
+        $userRole = new Role();
+        $userRole->name         = 'user';
+        $userRole->display_name = 'Registered User';
+        $userRole->description  = 'User is allowed to manage his own data';
+        $userRole->save();
 
         // role attach alias
         $user->attachRole($owner); // parameter can be an Role object, array, or id
         $user->attachRole($admin);
+        $user->attachRole($userRole);
 
         $dashboard = new Permission();
         $dashboard->name         = 'dashboard';
-        $dashboard->display_name = 'Dashboard'; // optional
-        $dashboard->description  = 'User dashboard access permission'; // optional
+        $dashboard->display_name = 'Dashboard';
+        $dashboard->description  = 'User dashboard access permission';
         $dashboard->save();
 
         $admin->attachPermission($dashboard);
         $owner->attachPermission($dashboard);
 
         return [
-            $user->hasRole('owner'),   // true
-            $user->hasRole('admin'),   // true
-            $user->can('dashboard'),   // true
+            $user->hasRole('owner'),
+            $user->hasRole('admin'),
+            $user->can('dashboard'),
             $user->ability('admin,owner', 'dashboard')
         ];
     }

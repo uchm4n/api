@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegisterd;
 use App\Http\Requests\RegisterUser;
 use App\Transformers\UserTransformer;
 use App\User;
@@ -54,7 +55,9 @@ class UserController extends Controller
     public function register(RegisterUser $request)
     {
         try {
-            return User::create($request->all());
+            $user = User::create($request->all());
+            event(new UserRegisterd($user));
+            return $user;
         }
         catch(\Exception $e){
             return $this->response->errorInternal('Cannot create User',$e);
